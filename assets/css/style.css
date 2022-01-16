@@ -1,0 +1,91 @@
+html{
+    height: 100%;
+}
+body{
+    background-color:#e5e5e5;
+    height: 100%;
+    padding-top:66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header{
+
+}
+body>main{
+    flex: 1 0 auto;
+    padding: 20px;
+}
+
+footer{
+    margin-top: auto;
+    padding: 10px;
+    text-align: center;
+}
+/**{*/
+/*    -webkit-user-select: none;       */
+/*    -moz-user-select: none;*/
+/*    -ms-user-select: none;*/
+/*    user-select: none;*/
+/*}*/
+.select{
+    -webkit-user-select: initial;       
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+.navbar{
+    box-shadow: 0px 0px 18px -5px black;
+}
+.right-buttons{
+    position:absolute;
+    right:0;
+    top:0;
+}
+.rb{
+    font-size:30px;
+    cursor:pointer;
+    z-index:10;
+    margin:13px 15px 10px;
+    display:inline-block;
+    vertical-align: top;
+    color:#fff;
+}
+.rb:hover{
+    color:#ddd;
+}
+.rb:active{
+    color:#aaa;
+}
+
+.shadow{
+    box-shadow: 0px 1px 8px -3px rgba(0, 0, 0, 0.6);
+    background-color:#fff;
+    border-radius:4px;
+    margin-top:5px;
+}
+.logo-title{
+    color:#fff;
+    font-size:25px;
+    margin-left:15px;
+}
+.status-container{
+    padding:10px;
+}
+.icon-red{color:red;}
+.icon-green{color:green;}
+.status-install-btn{
+    cursor:pointer;
+}
+.p-versions{
+    margin:0;
+}
+.spin-gif{
+    display:inline-block;
+    position: relative;
+    left:-10px;
+}
+.spin-gif img{
+    height:14px;
+    display:inline-block;
+}

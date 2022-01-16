@@ -1,0 +1,104 @@
+<div class="card m-auto">
+    <div class="card-body">
+        <h5 class="card-title">Επιλογή φακέλου</h5>
+        <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+        <div class="card-text">
+            <div class="form-group row">
+                <label for="directory" class="col-sm-3 col-form-label col-form-label-sm text-nowrap">
+                    <i class="fa fa-folder"></i>
+                    Φάκελος
+                </label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input
+                                type="text"
+                                class="form-control form-control-sm select"
+                                value="{{ $storage.env.directory }}"
+                                disabled
+                        />
+                        <div class="input-group-append">
+                            <button
+                                    class="btn btn-primary btn-sm"
+                                    type="button"
+                                    ng-click="results.openFolder()"
+                            >
+                                <i class="fa fa-folder"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" type="button" ng-click="results.clearFolder()">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" ng-show="$storage.env.directory !== '' && results.state === 0">
+            <button href="#" class="btn btn-warning" ng-click="results.analyzeFolder()" ng-disabled="results.ajaxLoading">
+                <i class="fa fa-bar-chart"></i> Ανάλυση αρχείων φακέλου
+                <i class="fa fa-spinner fa-spin" ng-show="results.ajaxLoading"></i>
+            </button>
+        </div>
+
+        <div class="text-center" ng-show="$storage.env.directory !== '' && results.state === 1">
+            <p ng-show="!results.files.length">
+                Δεν βρέθηκαν συμβατά αρχεία.
+            </p>
+            <div ng-show="results.files.length">
+                <p>
+                    Βρέθηκαν {{ results.files.length }} {{ results.files.length === 1 ? 'αρχείο' : 'αρχεία' }}.
+                </p>
+                <button class="btn btn-primary" ng-click="massFilter.show()" ng-disabled="results.ajaxLoading">
+                    <i class="fa fa-search"></i> Σύγκριση δεδομένων
+                    <i class="fa fa-spinner fa-spin" ng-show="results.ajaxLoading"></i>
+                </button>
+                <div class="container-fluid text-left pt-2">
+                    <ul class="list-group list-group-flush">
+                        <li  class="list-group-item p-1 select"
+                             ng-class="{'list-group-item-success': !!results.found[f]}"
+                             ng-repeat="f in results.files">
+                            {{f}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" ng-show="$storage.env.directory !== '' && results.state === 2">
+            <button class="btn btn-success" ng-click="results.openFile()">
+                <i class="fa fa-file-excel-o"></i> Άνοιγμα αρχείου
+            </button>
+            <button class="btn btn-danger" ng-show="results.state === 2" ng-click="results.reset()">
+                <i class="fa fa-trash"></i> Καθαρισμός
+            </button>
+        </div>
+    </div>
+
+
+    <div id="massFilterModal" class="modal" tabindex="-1" role="dialog" ng-init="massFilter.init()">
+        <div class="modal-dialog">
+            <div class="modal-content h-100 overflow-hidden">
+                <div class="modal-header">
+                    <h5 class="modal-title">Φίλτρο Αποτελεσμάτων</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-column fit-parent">
+                    <p>Εδώ μπορείτε να επικολλήσετε μια λίστα από αποτελέσματα για να τα συγκρίνετε με του φακέλου</p>
+                    <textarea name="massFilterText" id="massFilterText" cols="30" rows="10" class="form-control" ng-model="massFilter.text"></textarea>
+                </div>
+                <div class="modal-footer bg-white z-index-1">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Κλείσιμο</button>
+                    </div>
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-outline-success" ng-click="massFilter.applyFilters()" ng-disabled="!massFilter.text">Σύγκριση</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
