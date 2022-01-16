@@ -1,6 +1,6 @@
 {
   "name": "folderscanner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "productName": "Folder Scanner",
   "description": "A folder scanner app.",
   "main": "main.js",
@@ -26,12 +26,13 @@
     "electron-connect": "^0.6.3"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0",
+    "electron-context-menu": "^3.1.1",
     "electron-log": "^4.0.7",
     "electron-updater": "^4.2.2",
-    "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "ngstorage": "^0.3.11",
     "jquery": "^3.3.1",
+    "ngstorage": "^0.3.11",
     "popper.js": "^1.13.0"
   },
   "build": {

@@ -33,6 +33,12 @@ function createWindow() {
     }
 }
 
+const contextMenu = require('electron-context-menu');
+contextMenu({
+    showSaveImageAs: true,
+    showSearchWithGoogle: false
+});
+
 autoUpdater.logger                       = log;
 autoUpdater.logger.transports.file.level = "info";
 log.info("App starting...");

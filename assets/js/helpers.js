@@ -9,6 +9,7 @@ const { shell } = require('electron');
 const { dialog } = require('electron').remote;
 const fs = require('fs');
 const path = require('path');
+const { clipboard } = require('electron');
 
 var defaultEnv = {
     directory: ""
