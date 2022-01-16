@@ -8,9 +8,6 @@
 
 	function MainController($scope, $localStorage, $q, $timeout) {
 
-
-		const excel = require('node-excel-export');
-
 		$scope.ajaxLoading = false;
 		$scope.$storage = $localStorage;
 
